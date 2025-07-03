@@ -159,13 +159,10 @@
 </head>
 
 <body>
-    <!-- Method 1: Fixed background container -->
     <div class="background-container parallax-bg"></div>
 
-    <!-- Optional gradient overlay -->
     <div class="gradient-overlay"></div>
 
-    <!-- Image control buttons -->
     <div class="image-controls">
         <input
             type="text"
@@ -276,7 +273,9 @@
         function playPlaylist() {
             player.playVideo();
         }
-
+        function playNext() {
+            player.nextVideo();
+        }
         function extractPlaylistId(url) {
             const regex = /[&?]list=([^&]+)/;
             const match = url.match(regex);
@@ -285,11 +284,11 @@
 
         document.addEventListener('DOMContentLoaded', (event) => {
             const play = document.querySelector('.play-btn');
-            play.addEventListener('click', (ev) => playPlaylist())
+            play.addEventListener('click', playPlaylist)
             const stop = document.querySelector('.stop-btn');
             stop.addEventListener('click', stopVideo)
             const next = document.querySelector('.next-btn');
-            next.addEventListener('click', () => player.nextVideo());
+            next.addEventListener('click', playNext);
         })
     </script>
 </body>
